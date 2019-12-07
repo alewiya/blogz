@@ -1,16 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if blog_posts %}
+
 <h1>Bulid a Blog</h1>
+<ul>
+    {% for post in blog_posts %}
+    <li>
+        <h2><a href="/get-id?id={{post.id}}"> {{post.title}}</a></h2>
+      <!-- <h2><a href="get-id?id={{post.id}}"></a>{{post.title}}</a></h2> -->
+      <!--post.backref.backreffield-->
+      <p>{{post.body}}</p>
+      <p style="font-style: italic;"> Written by: <a href="/blog?owner={{post.owner}}">{{post.owner}}</a></p>
+      <hr>
+    </li>
+    {% endfor %}
+   </ul>
+{%endif%}
+
+
+
+ {%if posts%}
  <ul>
-  {% for post in blog_posts %}
-  <li>
-      <h2><a href="/get-id?id={{post.id}}"> {{post.title}}</a></h2>
-    <!-- <h2><a href="get-id?id={{post.id}}"></a>{{post.title}}</a></h2> -->
-    <p>{{post.body}}</p>
-    <hr>
-  </li>
-  {% endfor %}
- </ul>
+    {% for post in posts %}
+    <li>
+        <h2><a href="/blog?owner={{post.owner}}"> {{post.title}}</a></h2>
+      <!-- <h2><a href="get-id?id={{post.id}}"></a>{{post.title}}</a></h2> -->
+      <!--post.backref.backreffield-->
+      <p>{{post.body}}</p>
+      <p style="font-style: italic;"> Written by: <a href="/blog?owner={{post.owner}}">{{post.owner}}</a></p>
+      <hr>
+    </li>
+    {% endfor %}
+   </ul>
+ {%endif%}
+ 
 {% endblock %}
   

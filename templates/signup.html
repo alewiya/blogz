@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Sign Up to Create Accout</h1>
+<form action="/signup" method="post">
+    <nav>
+      <label for="un">User Name:</label>     
+      <input type="text" id='un' name="username" placeholder="Enter username" value="{{ username }}">
+      <span class="error">{{name_error}}</span>
+      <br><br>
+        
+        
+      <label for="pd">Password:</label>    
+      <input type="password" id='pd' placeholder="Enter password" name="password">
+      <span class="error">{{password_error}}</span>
+        <br><br>
+
+      <label for="vy">Verify Password:</label>     
+      <input  type="password" id='vy' name="verify" placeholder="Confirm Password">
+      <span class="error">{{verify_error}}</span>
+
+    </nav>
+    <br>
+    <input type="submit" value="Signup">
+</form>
+{% endblock %}

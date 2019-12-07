@@ -7,7 +7,7 @@
             background-color:lightsteelblue;
         }
         .error{
-            background-color:red;
+           color:red;
         }
         textarea {
                 margin: 10px 0;
@@ -25,27 +25,69 @@
         input{
             color:blue;
         }
-            h1{
-                color:blue;
-                text-align: center;
-
+       h1{
+         color:blue;
+         text-align: center;
+         }
+       ul li{
+          list-style: none;
             }
-            ul li{
-                list-style: none;
-            }
+       .home{
+           padding:2px;
+           margin-bottom:10px 0;
+           
+        }
+        .home a{
+           background-color:lightgoldenrodyellow;
+           border:2px solid black;
+           width: 100px;
+           height: 30px;
+           color:navy;
+           float: right;
+           }
+        p{
+            color:green;
+            font-family: Verdana;
+            font-size: medium;
+            font-style: inherit;
+        }
+        #head a{
+            border: 2px solid gray;
+            background-color:rgb(100, 200,100);
+            width: 130px;
+            height: 80px;
+            color:mediumblue;
+        }
     </style>
     </head>
     <body>
-        <nav>
-          <a href="/blog">Main Blog Page &nbsp;</a>
-    
-          <a href="/newpost">Add a Blog Entry</a> 
+        <div class='home'>
+            <a href="/logout">Log Out</a>
+             &nbsp;
+            <a href="/login">Log In</a>
+             &nbsp;
+
+        </div>
+        <br><br>
+        <nav id='head'>
+                &nbsp;
+          <a href='/'>Home</a>
+          &nbsp;
+          &nbsp;
+          <a href="/blog">All Posts</a>
+          &nbsp;
+          &nbsp;
+          <a href="/newpost">New post</a> 
         </nav>
-        {% with messages =get_flashed_messages(with_categories=True) %}
+        <br>
+        
+        <br><br>
+        {% with messages =get_flashed_messages() %}
         <ul>
-            {% for category,message in messages %}
-            <li class="{{category}}">{{message}}</li>
+            {% for message in messages %}
+            <li>{{message}}</li>
             {% endfor %}
+            <br>
         </ul>
         {% endwith %}
         {% block content %}
